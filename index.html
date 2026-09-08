@@ -1,0 +1,2671 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Eliminatórias UCL</title>
+
+
+<style>
+
+
+/* =========================================================
+   CONFIGURAÇÕES GERAIS
+========================================================= */
+
+
+* {
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+}
+
+
+:root {
+
+    --azul-escuro: #030a2c;
+
+    --texto: #ffffff;
+
+    --borda:
+        rgba(
+            114,
+            137,
+            255,
+            0.45
+        );
+
+}
+
+
+html {
+
+    min-height: 100%;
+
+    background:
+        var(--azul-escuro);
+
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    position: relative;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color:
+        var(--texto);
+
+    background:
+        var(--azul-escuro);
+
+    overflow-x:
+        hidden;
+
+}
+
+
+
+/* =========================================================
+   FUNDO DO SITE
+
+   SEM DESFOQUE.
+   A IMAGEM PODE JÁ TER A LOGO
+   UEFA CHAMPIONS LEAGUE.
+========================================================= */
+
+
+.background-layer {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 0;
+
+    background-position:
+        center top;
+
+    background-repeat:
+        no-repeat;
+
+    background-size:
+        cover;
+
+    filter: none;
+
+    pointer-events:
+        none;
+
+}
+
+
+
+/* =========================================================
+   CAMADA ESCURA LEVE
+
+   Só ajuda as caixas e textos a aparecerem.
+========================================================= */
+
+
+.background-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1;
+
+    pointer-events:
+        none;
+
+    background:
+
+        linear-gradient(
+
+            180deg,
+
+            rgba(
+                1,
+                5,
+                30,
+                0.01
+            ),
+
+            rgba(
+                2,
+                7,
+                38,
+                0.05
+            ),
+
+            rgba(
+                2,
+                6,
+                27,
+                0.12
+            )
+
+        );
+
+}
+
+
+
+/* =========================================================
+   CONTEÚDO FICA NA FRENTE DO FUNDO
+========================================================= */
+
+
+.espaco-topo,
+.mobile-tip,
+.bracket-scroll {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+}
+
+
+
+/* =========================================================
+   ESPAÇO SUPERIOR
+
+   A LOGO JÁ ESTÁ NA IMAGEM DO FUNDO.
+========================================================= */
+
+
+.espaco-topo {
+
+    width:
+        100%;
+
+    height:
+        190px;
+
+}
+
+
+
+/* =========================================================
+   ÁREA DA CHAVE
+========================================================= */
+
+
+.bracket-scroll {
+
+    width:
+        100%;
+
+    overflow-x:
+        auto;
+
+    overflow-y:
+        hidden;
+
+    padding:
+        5px 16px 50px;
+
+    scrollbar-color:
+
+        rgba(
+            100,
+            116,
+            255,
+            0.55
+        )
+
+        rgba(
+            255,
+            255,
+            255,
+            0.04
+        );
+
+}
+
+
+.bracket-scroll::-webkit-scrollbar {
+
+    height:
+        8px;
+
+}
+
+
+.bracket-scroll::-webkit-scrollbar-track {
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.04
+        );
+
+}
+
+
+.bracket-scroll::-webkit-scrollbar-thumb {
+
+    background:
+        rgba(
+            100,
+            116,
+            255,
+            0.55
+        );
+
+    border-radius:
+        999px;
+
+}
+
+
+
+/* =========================================================
+   CHAVE COMPLETA
+========================================================= */
+
+
+.bracket {
+
+    width:
+        max-content;
+
+    min-width:
+        1315px;
+
+    min-height:
+        680px;
+
+    margin:
+        auto;
+
+    display:
+        grid;
+
+    grid-template-columns:
+
+        145px
+        44px
+
+        145px
+        44px
+
+        145px
+
+        180px
+
+        145px
+
+        44px
+        145px
+
+        44px
+        145px;
+
+    column-gap:
+        9px;
+
+    align-items:
+        stretch;
+
+}
+
+
+
+/* =========================================================
+   ETAPAS
+========================================================= */
+
+
+.stage {
+
+    min-height:
+        680px;
+
+    position:
+        relative;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+}
+
+
+
+/* =========================================================
+   TÍTULOS
+========================================================= */
+
+
+.stage-title {
+
+    position:
+        absolute;
+
+    z-index:
+        5;
+
+    width:
+        100%;
+
+    text-align:
+        center;
+
+    color:
+        white;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:
+        15px;
+
+    font-weight:
+        700;
+
+    line-height:
+        1.1;
+
+    text-shadow:
+
+        0 3px 10px
+
+        rgba(
+            0,
+            0,
+            0,
+            0.70
+        );
+
+}
+
+
+
+/* QUARTAS */
+
+
+.quartas
+.stage-title {
+
+    top:
+        4px;
+
+}
+
+
+
+/* SEMIFINAIS */
+
+
+.semifinais
+.stage-title {
+
+    top:
+        105px;
+
+}
+
+
+
+/* FINAL */
+
+
+.final-stage
+.stage-title {
+
+    top:
+        257px;
+
+}
+
+
+
+/* CAMPEÃO */
+
+
+.champion-stage
+.stage-title {
+
+    top:
+        247px;
+
+}
+
+
+
+/* =========================================================
+   CORPO DAS ETAPAS
+========================================================= */
+
+
+.stage-body {
+
+    flex:
+        1;
+
+    min-height:
+        680px;
+
+    padding:
+        8px 0 25px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+}
+
+
+.quartas
+.stage-body {
+
+    justify-content:
+        space-around;
+
+}
+
+
+.semifinais
+.stage-body {
+
+    justify-content:
+        space-around;
+
+}
+
+
+.final-stage
+.stage-body {
+
+    justify-content:
+        center;
+
+}
+
+
+.champion-stage
+.stage-body {
+
+    justify-content:
+        center;
+
+}
+
+
+
+/* =========================================================
+   CAIXAS DOS JOGADORES
+========================================================= */
+
+
+.player-card {
+
+    width:
+        100%;
+
+    min-height:
+        68px;
+
+    padding:
+        9px 10px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        9px;
+
+    border-radius:
+        14px;
+
+    background:
+
+        linear-gradient(
+
+            135deg,
+
+            rgba(
+                25,
+                39,
+                105,
+                0.72
+            ),
+
+            rgba(
+                22,
+                17,
+                84,
+                0.62
+            )
+
+        );
+
+    border:
+        1px solid
+        var(--borda);
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+
+    box-shadow:
+
+        0 9px 30px
+
+        rgba(
+            0,
+            0,
+            0,
+            0.22
+        ),
+
+        inset
+        0 0 15px
+
+        rgba(
+            110,
+            119,
+            255,
+            0.05
+        );
+
+}
+
+
+
+/* =========================================================
+   ESCUDO
+========================================================= */
+
+
+.player-logo {
+
+    width:
+        44px;
+
+    height:
+        44px;
+
+    flex:
+        0 0 44px;
+
+    border-radius:
+        50%;
+
+    object-fit:
+        cover;
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.08
+        );
+
+    border:
+
+        1px solid
+
+        rgba(
+            255,
+            255,
+            255,
+            0.24
+        );
+
+}
+
+
+
+/* =========================================================
+   NOME
+========================================================= */
+
+
+.player-name {
+
+    flex:
+        1;
+
+    min-width:
+        0;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size:
+        14px;
+
+    font-weight:
+        700;
+
+    line-height:
+        1.15;
+
+    overflow-wrap:
+        anywhere;
+
+}
+
+
+
+/* =========================================================
+   CAMPEÃO
+========================================================= */
+
+
+.champion-stage {
+
+    position:
+        relative;
+
+}
+
+
+.champion-card {
+
+    min-height:
+        84px;
+
+    background:
+
+        linear-gradient(
+
+            135deg,
+
+            rgba(
+                68,
+                54,
+                174,
+                0.80
+            ),
+
+            rgba(
+                27,
+                48,
+                126,
+                0.78
+            )
+
+        );
+
+    border:
+
+        1px solid
+
+        rgba(
+            164,
+            169,
+            255,
+            0.65
+        );
+
+    box-shadow:
+
+        0 0 35px
+
+        rgba(
+            104,
+            78,
+            255,
+            0.20
+        );
+
+}
+
+
+.champion-card
+.player-logo {
+
+    width:
+        52px;
+
+    height:
+        52px;
+
+    flex-basis:
+        52px;
+
+}
+
+
+.champion-card
+.player-name {
+
+    font-size:
+        16px;
+
+}
+
+
+
+/* =========================================================
+   CONECTORES
+========================================================= */
+
+
+.connector-column {
+
+    min-height:
+        680px;
+
+    padding:
+        0 0 25px;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+}
+
+
+.connector-pair {
+
+    position:
+        relative;
+
+    flex:
+        1;
+
+}
+
+
+.connector-pair
+.line-top,
+
+.connector-pair
+.line-bottom,
+
+.connector-pair
+.line-middle,
+
+.connector-pair
+.line-vertical {
+
+    position:
+        absolute;
+
+    display:
+        block;
+
+    background:
+
+        rgba(
+            194,
+            205,
+            255,
+            0.70
+        );
+
+}
+
+
+
+/* =========================================================
+   CONECTORES ESQUERDA
+========================================================= */
+
+
+.connector-left
+.line-top {
+
+    left:
+        0;
+
+    top:
+        25%;
+
+    width:
+        75%;
+
+    height:
+        2px;
+
+}
+
+
+.connector-left
+.line-bottom {
+
+    left:
+        0;
+
+    top:
+        75%;
+
+    width:
+        75%;
+
+    height:
+        2px;
+
+}
+
+
+.connector-left
+.line-vertical {
+
+    left:
+        75%;
+
+    top:
+        25%;
+
+    width:
+        2px;
+
+    height:
+        50%;
+
+}
+
+
+.connector-left
+.line-middle {
+
+    left:
+        75%;
+
+    top:
+        50%;
+
+    width:
+        25%;
+
+    height:
+        2px;
+
+}
+
+
+
+/* =========================================================
+   CONECTORES DIREITA
+========================================================= */
+
+
+.connector-right
+.line-top {
+
+    right:
+        0;
+
+    top:
+        25%;
+
+    width:
+        75%;
+
+    height:
+        2px;
+
+}
+
+
+.connector-right
+.line-bottom {
+
+    right:
+        0;
+
+    top:
+        75%;
+
+    width:
+        75%;
+
+    height:
+        2px;
+
+}
+
+
+.connector-right
+.line-vertical {
+
+    right:
+        75%;
+
+    top:
+        25%;
+
+    width:
+        2px;
+
+    height:
+        50%;
+
+}
+
+
+.connector-right
+.line-middle {
+
+    right:
+        75%;
+
+    top:
+        50%;
+
+    width:
+        25%;
+
+    height:
+        2px;
+
+}
+
+
+
+/* =========================================================
+   LINHAS DO CAMPEÃO
+========================================================= */
+
+
+.champion-stage::before,
+
+.champion-stage::after {
+
+    content:
+        "";
+
+    position:
+        absolute;
+
+    top:
+        50%;
+
+    width:
+        10px;
+
+    height:
+        2px;
+
+    background:
+
+        rgba(
+            194,
+            205,
+            255,
+            0.70
+        );
+
+}
+
+
+.champion-stage::before {
+
+    left:
+        -10px;
+
+}
+
+
+.champion-stage::after {
+
+    right:
+        -10px;
+
+}
+
+
+
+/* =========================================================
+   DICA PARA CELULAR
+========================================================= */
+
+
+.mobile-tip {
+
+    display:
+        none;
+
+    padding:
+        0 20px 15px;
+
+    text-align:
+        center;
+
+    color:
+        #d5d9ff;
+
+    font-size:
+        12px;
+
+    text-shadow:
+
+        0 2px 6px
+
+        rgba(
+            0,
+            0,
+            0,
+            0.8
+        );
+
+}
+
+
+
+/* =========================================================
+   RESPONSIVIDADE PARA CELULAR
+========================================================= */
+
+
+@media
+(max-width: 800px) {
+
+
+    /* ESPAÇO DA LOGO */
+
+    .espaco-topo {
+
+        height:
+            120px;
+
+    }
+
+
+
+    /* CHAVE MAIS COMPACTA */
+
+    .bracket {
+
+        min-width:
+            920px;
+
+        min-height:
+            520px;
+
+        grid-template-columns:
+
+            105px
+            28px
+
+            105px
+            28px
+
+            105px
+
+            125px
+
+            105px
+
+            28px
+            105px
+
+            28px
+            105px;
+
+        column-gap:
+            5px;
+
+    }
+
+
+
+    /* ALTURA */
+
+    .stage {
+
+        min-height:
+            520px;
+
+    }
+
+
+    .stage-body {
+
+        min-height:
+            520px;
+
+        padding:
+            8px 0 18px;
+
+    }
+
+
+
+    /* CONECTORES */
+
+    .connector-column {
+
+        min-height:
+            520px;
+
+        padding:
+            0 0 18px;
+
+    }
+
+
+
+    /* CAIXAS */
+
+    .player-card {
+
+        min-height:
+            52px;
+
+        padding:
+            6px 7px;
+
+        gap:
+            6px;
+
+        border-radius:
+            10px;
+
+    }
+
+
+
+    /* ESCUDO */
+
+    .player-logo {
+
+        width:
+            32px;
+
+        height:
+            32px;
+
+        flex-basis:
+            32px;
+
+    }
+
+
+
+    /* NOME */
+
+    .player-name {
+
+        font-size:
+            11.5px;
+
+        line-height:
+            1.1;
+
+    }
+
+
+
+    /* CAMPEÃO */
+
+    .champion-card {
+
+        min-height:
+            62px;
+
+    }
+
+
+    .champion-card
+    .player-logo {
+
+        width:
+            38px;
+
+        height:
+            38px;
+
+        flex-basis:
+            38px;
+
+    }
+
+
+    .champion-card
+    .player-name {
+
+        font-size:
+            12px;
+
+    }
+
+
+
+    /* TÍTULOS */
+
+    .stage-title {
+
+        font-size:
+            11px;
+
+    }
+
+
+    .quartas
+    .stage-title {
+
+        top:
+            8px;
+
+    }
+
+
+    .semifinais
+    .stage-title {
+
+        top:
+            77px;
+
+    }
+
+
+    .final-stage
+    .stage-title {
+
+        top:
+            200px;
+
+    }
+
+
+    .champion-stage
+    .stage-title {
+
+        top:
+            190px;
+
+    }
+
+
+
+    /* DICA */
+
+    .mobile-tip {
+
+        display:
+            block;
+
+        padding:
+            0 15px 10px;
+
+        font-size:
+            11px;
+
+    }
+
+
+
+    /* MENOS MARGEM */
+
+    .bracket-scroll {
+
+        padding:
+            4px 6px 30px;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   CELULARES PEQUENOS
+========================================================= */
+
+
+@media
+(max-width: 480px) {
+
+
+    .espaco-topo {
+
+        height:
+            105px;
+
+    }
+
+
+    .bracket {
+
+        min-width:
+            835px;
+
+        grid-template-columns:
+
+            95px
+            25px
+
+            95px
+            25px
+
+            95px
+
+            110px
+
+            95px
+
+            25px
+            95px
+
+            25px
+            95px;
+
+        column-gap:
+            4px;
+
+    }
+
+
+    .player-card {
+
+        padding:
+            5px 6px;
+
+    }
+
+
+    .player-logo {
+
+        width:
+            29px;
+
+        height:
+            29px;
+
+        flex-basis:
+            29px;
+
+    }
+
+
+    .player-name {
+
+        font-size:
+            10.5px;
+
+    }
+
+
+    .stage-title {
+
+        font-size:
+            10px;
+
+    }
+
+
+    .champion-card
+    .player-logo {
+
+        width:
+            35px;
+
+        height:
+            35px;
+
+        flex-basis:
+            35px;
+
+    }
+
+
+    .champion-card
+    .player-name {
+
+        font-size:
+            11px;
+
+    }
+
+}
+
+
+</style>
+
+</head>
+
+
+
+<body>
+
+
+
+<!-- ======================================================
+     FUNDO
+======================================================= -->
+
+
+<div
+    id="backgroundLayer"
+    class="background-layer"
+></div>
+
+
+<div
+    class="background-overlay"
+></div>
+
+
+
+<!-- ======================================================
+     ESPAÇO DA LOGO QUE JÁ ESTÁ NO FUNDO
+======================================================= -->
+
+
+<div
+    class="espaco-topo"
+></div>
+
+
+
+<!-- ======================================================
+     DICA NO CELULAR
+======================================================= -->
+
+
+<div
+    class="mobile-tip"
+>
+
+    ↔ Deslize para o lado para visualizar toda a chave
+
+</div>
+
+
+
+<!-- ======================================================
+     CHAVE
+======================================================= -->
+
+
+<div
+    class="bracket-scroll"
+>
+
+
+<div
+    class="bracket"
+>
+
+
+
+    <!-- QUARTAS ESQUERDA -->
+
+
+    <section
+        class="stage quartas"
+    >
+
+
+        <div
+            class="stage-title"
+        >
+
+            QUARTAS DE FINAL
+
+        </div>
+
+
+        <div
+            id="quartasEsquerda"
+            class="stage-body"
+        ></div>
+
+
+    </section>
+
+
+
+    <!-- CONECTOR -->
+
+
+    <div
+        class="
+            connector-column
+            connector-left
+        "
+    >
+
+
+        <div
+            class="connector-pair"
+        >
+
+            <span class="line-top"></span>
+            <span class="line-bottom"></span>
+            <span class="line-vertical"></span>
+            <span class="line-middle"></span>
+
+        </div>
+
+
+        <div
+            class="connector-pair"
+        >
+
+            <span class="line-top"></span>
+            <span class="line-bottom"></span>
+            <span class="line-vertical"></span>
+            <span class="line-middle"></span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- SEMIFINAIS ESQUERDA -->
+
+
+    <section
+        class="stage semifinais"
+    >
+
+
+        <div
+            class="stage-title"
+        >
+
+            SEMIFINAIS
+
+        </div>
+
+
+        <div
+            id="semiEsquerda"
+            class="stage-body"
+        ></div>
+
+
+    </section>
+
+
+
+    <!-- CONECTOR -->
+
+
+    <div
+        class="
+            connector-column
+            connector-left
+        "
+    >
+
+
+        <div
+            class="connector-pair"
+        >
+
+            <span class="line-top"></span>
+            <span class="line-bottom"></span>
+            <span class="line-vertical"></span>
+            <span class="line-middle"></span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- FINAL ESQUERDA -->
+
+
+    <section
+        class="
+            stage
+            final-stage
+        "
+    >
+
+
+        <div
+            class="stage-title"
+        >
+
+            FINAL
+
+        </div>
+
+
+        <div
+            id="finalEsquerda"
+            class="stage-body"
+        ></div>
+
+
+    </section>
+
+
+
+    <!-- CAMPEÃO -->
+
+
+    <section
+        class="
+            stage
+            champion-stage
+        "
+    >
+
+
+        <div
+            class="stage-title"
+        >
+
+            🏆 CAMPEÃO
+
+        </div>
+
+
+        <div
+            id="campeao"
+            class="stage-body"
+        ></div>
+
+
+    </section>
+
+
+
+    <!-- FINAL DIREITA -->
+
+
+    <section
+        class="
+            stage
+            final-stage
+        "
+    >
+
+
+        <div
+            class="stage-title"
+        >
+
+            FINAL
+
+        </div>
+
+
+        <div
+            id="finalDireita"
+            class="stage-body"
+        ></div>
+
+
+    </section>
+
+
+
+    <!-- CONECTOR -->
+
+
+    <div
+        class="
+            connector-column
+            connector-right
+        "
+    >
+
+
+        <div
+            class="connector-pair"
+        >
+
+            <span class="line-top"></span>
+            <span class="line-bottom"></span>
+            <span class="line-vertical"></span>
+            <span class="line-middle"></span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- SEMIFINAIS DIREITA -->
+
+
+    <section
+        class="stage semifinais"
+    >
+
+
+        <div
+            class="stage-title"
+        >
+
+            SEMIFINAIS
+
+        </div>
+
+
+        <div
+            id="semiDireita"
+            class="stage-body"
+        ></div>
+
+
+    </section>
+
+
+
+    <!-- CONECTOR -->
+
+
+    <div
+        class="
+            connector-column
+            connector-right
+        "
+    >
+
+
+        <div
+            class="connector-pair"
+        >
+
+            <span class="line-top"></span>
+            <span class="line-bottom"></span>
+            <span class="line-vertical"></span>
+            <span class="line-middle"></span>
+
+        </div>
+
+
+        <div
+            class="connector-pair"
+        >
+
+            <span class="line-top"></span>
+            <span class="line-bottom"></span>
+            <span class="line-vertical"></span>
+            <span class="line-middle"></span>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- QUARTAS DIREITA -->
+
+
+    <section
+        class="stage quartas"
+    >
+
+
+        <div
+            class="stage-title"
+        >
+
+            QUARTAS DE FINAL
+
+        </div>
+
+
+        <div
+            id="quartasDireita"
+            class="stage-body"
+        ></div>
+
+
+    </section>
+
+
+</div>
+
+
+</div>
+
+
+
+<script>
+
+
+
+/* =========================================================
+   ✏️✏️✏️ EDITE AQUI ✏️✏️✏️
+========================================================= */
+
+
+
+/* =========================================================
+   VERSÃO
+
+   Para imagens salvas dentro do GitHub:
+
+   v1 → v2 → v3...
+========================================================= */
+
+
+const SITE_VERSION =
+    "v1";
+
+
+
+/* =========================================================
+   FUNDO
+
+   COLE AQUI O LINK DA IMAGEM QUE JÁ POSSUI
+   UEFA CHAMPIONS LEAGUE ESCRITO.
+========================================================= */
+
+
+const VISUAL = {
+
+
+    fundo:
+
+        "https://i.pinimg.com/1200x/9d/f1/fe/9df1fe4889ec249c6b9cca597e1ed336.jpg"
+
+
+};
+
+
+
+/* =========================================================
+   QUARTAS
+========================================================= */
+
+
+const QUARTAS = {
+
+
+    jogador1: {
+
+        nome:
+            "ELISSO",
+
+        logo:
+            "https://i.pinimg.com/1200x/7c/5d/93/7c5d930070cf2f64632467c2dcaac2d0.jpg"
+
+    },
+
+
+    jogador2: {
+
+        nome:
+            "KRONOS",
+
+        logo:
+            "https://i.pinimg.com/1200x/16/3d/d6/163dd6ae4c2cf1b1f940730b266b64e9.jpg"
+
+    },
+
+
+    jogador3: {
+
+        nome:
+            "MIH",
+
+        logo:
+            "http://i.pinimg.com/736x/92/9b/d5/929bd5fe18ea1342033247e5a2427e74.jpg"
+
+    },
+
+
+    jogador4: {
+
+        nome:
+            "GUSTINHO",
+
+        logo:
+            "https://i.pinimg.com/1200x/e7/ff/61/e7ff61a75a8a47fd29a17237f96d70e7.jpg"
+
+    },
+
+
+    jogador5: {
+
+        nome:
+            "WILDE",
+
+        logo:
+            "https://i.pinimg.com/1200x/fd/14/ec/fd14eca0ad1b6be35da0bdb5b583246e.jpg"
+
+    },
+
+
+    jogador6: {
+
+        nome:
+            "GUIZINHO",
+
+        logo:
+            "https://i.pinimg.com/1200x/56/20/ec/5620ec0ac7d0e4d777734402f6d6f5a8.jpg"
+
+    },
+
+
+    jogador7: {
+
+        nome:
+            "JOÃO PEDRO",
+
+        logo:
+            "https://i.pinimg.com/1200x/39/ef/d1/39efd1b9b8ff7d8aecb1a702f10ed218.jpg"
+
+    },
+
+
+    jogador8: {
+
+        nome:
+            "JOÃO VICTOR",
+
+        logo:
+            "https://i.pinimg.com/736x/9d/b7/d9/9db7d9e988905bd4fa3273c1f0285ef5.jpg"
+
+    }
+
+
+};
+
+
+
+
+/* =========================================================
+   SEMIFINAIS
+========================================================= */
+
+
+const SEMIFINAIS = {
+
+
+    semi1: {
+
+        nome:
+            "A definir",
+
+        logo:
+            ""
+
+    },
+
+
+    semi2: {
+
+        nome:
+            "A definir",
+
+        logo:
+            ""
+
+    },
+
+
+    semi3: {
+
+        nome:
+            "A definir",
+
+        logo:
+            ""
+
+    },
+
+
+    semi4: {
+
+        nome:
+            "A definir",
+
+        logo:
+            ""
+
+    }
+
+
+};
+
+
+
+/* =========================================================
+   FINAL
+========================================================= */
+
+
+const FINAL = {
+
+
+    finalista1: {
+
+        nome:
+            "A definir",
+
+        logo:
+            ""
+
+    },
+
+
+    finalista2: {
+
+        nome:
+            "A definir",
+
+        logo:
+            ""
+
+    }
+
+
+};
+
+
+
+/* =========================================================
+   CAMPEÃO
+========================================================= */
+
+
+const CAMPEAO = {
+
+
+    nome:
+        "A definir",
+
+    logo:
+        ""
+
+
+};
+
+
+
+/* =========================================================
+   ✋ NÃO PRECISA EDITAR ABAIXO
+========================================================= */
+
+
+
+/* =========================================================
+   URL DAS IMAGENS
+
+   Se for um link externo do Google/site,
+   NÃO adicionamos ?v= porque alguns links
+   quebram quando são modificados.
+
+   Se for imagem do próprio projeto,
+   usamos SITE_VERSION.
+========================================================= */
+
+
+function urlComVersao(url) {
+
+
+    if (!url) {
+
+        return "";
+
+    }
+
+
+    const limpa =
+        url.trim();
+
+
+    if (
+
+        limpa.startsWith(
+            "http://"
+        )
+
+        ||
+
+        limpa.startsWith(
+            "https://"
+        )
+
+        ||
+
+        limpa.startsWith(
+            "data:"
+        )
+
+        ||
+
+        limpa.startsWith(
+            "blob:"
+        )
+
+    ) {
+
+        return limpa;
+
+    }
+
+
+    const separador =
+
+        limpa.includes("?")
+
+        ?
+
+        "&"
+
+        :
+
+        "?";
+
+
+    return (
+
+        limpa
+
+        +
+
+        separador
+
+        +
+
+        "site_version="
+
+        +
+
+        encodeURIComponent(
+            SITE_VERSION
+        )
+
+    );
+
+
+}
+
+
+
+/* =========================================================
+   CARREGAR FUNDO
+========================================================= */
+
+
+function carregarVisual() {
+
+
+    const fundo =
+
+        VISUAL
+            .fundo
+            .trim();
+
+
+    if (
+
+        fundo
+
+        &&
+
+        !fundo.startsWith(
+            "COLE_AQUI"
+        )
+
+    ) {
+
+
+        document
+            .getElementById(
+                "backgroundLayer"
+            )
+            .style
+            .backgroundImage =
+
+                `url("${urlComVersao(fundo)}")`;
+
+
+    }
+
+
+    else {
+
+
+        document
+            .getElementById(
+                "backgroundLayer"
+            )
+            .style
+            .backgroundImage = `
+
+                radial-gradient(
+                    circle at 25% 25%,
+                    #173bb8,
+                    transparent 35%
+                ),
+
+                radial-gradient(
+                    circle at 70% 65%,
+                    #641bb5,
+                    transparent 38%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #061044,
+                    #030825
+                )
+
+            `;
+
+
+    }
+
+
+}
+
+
+
+/* =========================================================
+   IMAGEM PADRÃO
+========================================================= */
+
+
+function imagemPadrao() {
+
+
+    const svg = `
+
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="100"
+            height="100"
+        >
+
+            <circle
+                cx="50"
+                cy="50"
+                r="48"
+                fill="#17255f"
+            />
+
+
+            <circle
+                cx="50"
+                cy="50"
+                r="46"
+                fill="none"
+                stroke="#7181ff"
+                stroke-width="2"
+            />
+
+
+            <text
+                x="50"
+                y="61"
+                text-anchor="middle"
+                font-family="Arial"
+                font-size="38"
+                fill="white"
+            >
+
+                ⚽
+
+            </text>
+
+        </svg>
+
+    `;
+
+
+    return (
+
+        "data:image/svg+xml;charset=UTF-8,"
+
+        +
+
+        encodeURIComponent(
+            svg
+        )
+
+    );
+
+
+}
+
+
+
+/* =========================================================
+   TEXTO SEGURO
+========================================================= */
+
+
+function escapeHTML(texto) {
+
+
+    return String(
+        texto ?? ""
+    )
+
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+
+        .replace(
+            /</g,
+            "&lt;"
+        )
+
+        .replace(
+            />/g,
+            "&gt;"
+        )
+
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+
+}
+
+
+
+/* =========================================================
+   CRIAR CAIXA
+========================================================= */
+
+
+function criarCard(
+    jogador,
+    campeao = false
+) {
+
+
+    const nome =
+
+        jogador.nome
+
+        ||
+
+        "A definir";
+
+
+    const imagem =
+
+        jogador.logo
+
+        ?
+
+        urlComVersao(
+            jogador.logo
+        )
+
+        :
+
+        imagemPadrao();
+
+
+    return `
+
+        <div
+            class="
+                player-card
+                ${
+                    campeao
+                    ?
+                    "champion-card"
+                    :
+                    ""
+                }
+            "
+        >
+
+
+            <img
+                class="player-logo"
+
+                src="${imagem}"
+
+                alt=""
+
+                referrerpolicy="no-referrer"
+
+                onerror="
+                    this.onerror=null;
+                    this.src='${imagemPadrao()}';
+                "
+            >
+
+
+            <span
+                class="player-name"
+            >
+
+                ${escapeHTML(
+                    nome
+                )}
+
+            </span>
+
+
+        </div>
+
+    `;
+
+
+}
+
+
+
+/* =========================================================
+   RENDERIZAR CHAVE
+========================================================= */
+
+
+function renderizarChave() {
+
+
+    document
+        .getElementById(
+            "quartasEsquerda"
+        )
+        .innerHTML =
+
+            criarCard(
+                QUARTAS.jogador1
+            )
+
+            +
+
+            criarCard(
+                QUARTAS.jogador2
+            )
+
+            +
+
+            criarCard(
+                QUARTAS.jogador3
+            )
+
+            +
+
+            criarCard(
+                QUARTAS.jogador4
+            );
+
+
+
+    document
+        .getElementById(
+            "semiEsquerda"
+        )
+        .innerHTML =
+
+            criarCard(
+                SEMIFINAIS.semi1
+            )
+
+            +
+
+            criarCard(
+                SEMIFINAIS.semi2
+            );
+
+
+
+    document
+        .getElementById(
+            "finalEsquerda"
+        )
+        .innerHTML =
+
+            criarCard(
+                FINAL.finalista1
+            );
+
+
+
+    document
+        .getElementById(
+            "campeao"
+        )
+        .innerHTML =
+
+            criarCard(
+                CAMPEAO,
+                true
+            );
+
+
+
+    document
+        .getElementById(
+            "finalDireita"
+        )
+        .innerHTML =
+
+            criarCard(
+                FINAL.finalista2
+            );
+
+
+
+    document
+        .getElementById(
+            "semiDireita"
+        )
+        .innerHTML =
+
+            criarCard(
+                SEMIFINAIS.semi3
+            )
+
+            +
+
+            criarCard(
+                SEMIFINAIS.semi4
+            );
+
+
+
+    document
+        .getElementById(
+            "quartasDireita"
+        )
+        .innerHTML =
+
+            criarCard(
+                QUARTAS.jogador5
+            )
+
+            +
+
+            criarCard(
+                QUARTAS.jogador6
+            )
+
+            +
+
+            criarCard(
+                QUARTAS.jogador7
+            )
+
+            +
+
+            criarCard(
+                QUARTAS.jogador8
+            );
+
+
+}
+
+
+
+/* =========================================================
+   INICIAR
+========================================================= */
+
+
+document.addEventListener(
+
+    "DOMContentLoaded",
+
+    function () {
+
+
+        carregarVisual();
+
+
+        renderizarChave();
+
+
+    }
+
+);
+
+
+</script>
+
+
+</body>
+
+</html>
